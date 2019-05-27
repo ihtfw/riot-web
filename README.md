@@ -471,3 +471,41 @@ community engagement
 * hacktoberfest
 * bounty? - proposal to be included in a bounty programme
 * bounty - included in Status Open Bounty
+
+## 
+
+# Step by step
+## Requiremnents
+- git
+- node@latest
+- npm@latest
+- yarn@latest electron@4.1.5
+
+## Clone
+git clone https://github.com/ihtfw/riot-web.git
+cd riot-web
+git checkout ilfumo
+
+## install dependencies
+yarn install
+
+## install right versions of matrix-react-sdk matrix-js-sdk from my forks
+cd scripts
+fetch-develop.deps.sh
+
+## don't forget to copy config.json
+
+## Run
+
+### Electron
+yarn build
+yarn electron
+
+### Web
+yarn start
+
+## release
+### only for Windows
+yarn build:electron:windows
+### for all (only from mac)
+yarn build:electron
