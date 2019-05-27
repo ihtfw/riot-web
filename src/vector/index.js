@@ -414,9 +414,14 @@ async function loadLanguage() {
     let langs = [];
 
     if (!prefLang) {
-        languageHandler.getLanguagesFromBrowser().forEach((l) => {
-            langs.push(...languageHandler.getNormalizedLanguageKeys(l));
-        });
+        let langAttr = document.documentElement.getAttribute("lang");
+        if (langAttr){
+            langs.push(langAttr);
+        }else{
+            languageHandler.getLanguagesFromBrowser().forEach((l) => {
+                langs.push(...languageHandler.getNormalizedLanguageKeys(l));
+            });
+        }
     } else {
         langs = [prefLang];
     }

@@ -1,6 +1,6 @@
 {
-  "name": "riot-web",
-  "productName": "Riot",
+  "name": "ilfumo-riot-web",
+  "productName": "ilfumo Riot",
   "main": "src/electron-main.js",
   "version": "1.1.2",
   "description": "A feature-rich client for Matrix.org",

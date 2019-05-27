@@ -7,7 +7,7 @@
     "Riot is not supported on mobile web. Install the app?": "Веб-сайт Riot не адаптирован для мобильных устройств. Установить приложение?",
     "Unknown device": "Неизвестное устройство",
     "You need to be using HTTPS to place a screen-sharing call.": "Для трансляции рабочего стола требуется использование HTTPS.",
-    "Welcome to Riot.im": "Добро пожаловать в Riot.im",
+    "Welcome to Riot.im": "Добро пожаловать в ilfumo Riot.im",
     "Decentralised, encrypted chat &amp; collaboration powered by [matrix]": "Децентрализованный, шифрованный чат и совместное рабочее пространство на основе [matrix]",
     "Search the room directory": "Поиск в каталоге комнат",
     "Chat with Riot Bot": "Чат с ботом Riot",
@@ -42,5 +42,15 @@
     "Create Account": "Создать аккаунт",
     "Need help?": "Помочь?",
     "Room Directory": "Каталог комнат",
-    "Explore rooms": "Исследовать комнаты"
+    "Explore rooms": "Исследовать комнаты",    
+    "Sign in to your Matrix account": "Войдите в ваш аккаунт",
+    "Create account": "Создать аккаунт",
+    "Sign in instead": "Войти в аккаунт",    
+    "Create your Matrix account on %(serverName)s": "Создайте ваш аккаунт на сервере %(serverName)s",
+    "Sign in to your Matrix account on %(serverName)s": "Войдите в ваш аккаует на сервере %(serverName)s",
+    "Set a new password": "Установить новый пароль",
+    "Your Matrix account on %(serverName)s": "Ваш аккаунт на сервере %(serverName)s", 
+    "A verification email will be sent to your inbox to confirm setting your new password.": "На вашу почту будет отправлено письмо для подтвержения",
+    "Use an email address to recover your account. Other users can invite you to rooms using your contact details.": "Используйте вашу почту для восстановления доступа."
+   
 }

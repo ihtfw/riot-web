@@ -196,7 +196,7 @@ if (!gotLock) {
 }
 
 const launcher = new AutoLaunch({
-    name: vectorConfig.brand || 'Riot',
+    name: vectorConfig.brand || 'ilfumo Riot',
     isHidden: true,
     mac: {
         useLaunchAgent: true,
@@ -336,7 +336,7 @@ app.on('ready', () => {
     // Create trayIcon icon
     tray.create({
         icon_path: iconPath,
-        brand: vectorConfig.brand || 'Riot',
+        brand: vectorConfig.brand || 'ilfumo Riot',
     });
 
     mainWindow.once('ready-to-show', () => {
