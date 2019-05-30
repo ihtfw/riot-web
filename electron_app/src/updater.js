@@ -20,6 +20,7 @@ function pollForUpdates() {
 
 module.exports = {};
 module.exports.start = function startAutoUpdate(updateBaseUrl) {
+    console.log('start setup autoupdate');
     if (updateBaseUrl.slice(-1) !== '/') {
         updateBaseUrl = updateBaseUrl + '/';
     }
@@ -37,10 +38,12 @@ module.exports.start = function startAutoUpdate(updateBaseUrl) {
             // rely on NSURLConnection setting the User-Agent to what we expect,
             // and also acts as a convenient cache-buster to ensure that when the
             // app updates it always gets a fresh value to avoid update-looping.
-            url = `${updateBaseUrl}macos/?localVersion=${encodeURIComponent(app.getVersion())}`;
-
+            //url = `${updateBaseUrl}macos/?localVersion=${encodeURIComponent(app.getVersion())}`;
+            url = `${updateBaseUrl}macos/RELEASES.json`;//?localVersion=${encodeURIComponent(app.getVersion())}`;
+            console.log('DARWIN URL: ' + url);
         } else if (process.platform === 'win32') {
             url = `${updateBaseUrl}win32/${process.arch}/`;
+            console.log('WIN URL: ' + url);
         } else {
             // Squirrel / electron only supports auto-update on these two platforms.
             // I'm not even going to try to guess which feed style they'd use if they
@@ -49,7 +52,16 @@ module.exports.start = function startAutoUpdate(updateBaseUrl) {
         }
 
         if (url) {
-            autoUpdater.setFeedURL(url);
+            console.log('setFeedURL with ' + url)
+            
+            if (process.platform === 'darwin'){
+                autoUpdater.setFeedURL({
+                    url: url,
+                    serverType: 'json'
+                });
+            }else{
+                autoUpdater.setFeedURL(url);
+            }
             // We check for updates ourselves rather than using 'updater' because we need to
             // do it in the main process (and we don't really need to check every 10 minutes:
             // every hour should be just fine for a desktop app)
@@ -59,6 +71,8 @@ module.exports.start = function startAutoUpdate(updateBaseUrl) {
             // lock file.
             setTimeout(pollForUpdates, INITIAL_UPDATE_DELAY_MS);
             setInterval(pollForUpdates, UPDATE_POLL_INTERVAL_MS);
+        }else{
+            console.log('Url not set');
         }
     } catch (err) {
         // will fail if running in debug mode
