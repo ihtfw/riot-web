@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-const {app, shell, Menu} = require('electron');
+const {clipboard, app, shell, Menu} = require('electron');
 
 // Menu template from http://electron.atom.io/docs/api/menu/, edited
 const template = [
@@ -25,7 +25,23 @@ const template = [
             { role: 'redo' },
             { type: 'separator' },
             { role: 'cut' },
-            { role: 'copy' },
+            { 
+                label: 'Copy',
+                accelerator: 'CmdOrCtrl+C',
+                click() {
+                    const webContents = global.mainWindow.webContents
+
+                    webContents.executeJavaScript('window.getSelection().toString()', true, res =>{
+                        if (res)
+                            clipboard.writeText(res)
+                    })
+                }
+            },
+            { 
+                role: 'copy', 
+                label: 'Copy with formatting',
+                accelerator: 'CmdOrCtrl+Shift+C' 
+            },
             { role: 'paste' },
             { role: 'pasteandmatchstyle' },
             { role: 'delete' },

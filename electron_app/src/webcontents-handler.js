@@ -122,22 +122,38 @@ function onLinkContextMenu(ev, params) {
 }
 
 function _CutCopyPasteSelectContextMenus(params) {
-    return [{
-        role: 'cut',
-        enabled: params.editFlags.canCut,
-    }, {
-        role: 'copy',
-        enabled: params.editFlags.canCopy,
-    }, {
-        role: 'paste',
-        enabled: params.editFlags.canPaste,
-    }, {
-        role: 'pasteandmatchstyle',
-        enabled: params.editFlags.canPaste,
-    }, {
-        role: 'selectall',
-        enabled: params.editFlags.canSelectAll,
-    }];
+    return [
+        {
+            role: 'cut',
+            enabled: params.editFlags.canCut,
+        }, 
+        {
+            label: 'Copy',
+            accelerator: 'CmdOrCtrl+C',
+            enabled: params.editFlags.canCopy,
+            click() {
+                clipboard.writeText(params.selectionText)
+            }
+        }, 
+        {        
+            role: 'copy',
+            label: 'Copy with formatting',
+            accelerator: 'CmdOrCtrl+Shift+C',
+            enabled: params.editFlags.canCopy
+        }, 
+        {
+            role: 'paste',
+            enabled: params.editFlags.canPaste,
+        }, 
+        {
+            role: 'pasteandmatchstyle',
+            enabled: params.editFlags.canPaste,
+        }, 
+        {
+            role: 'selectall',
+            enabled: params.editFlags.canSelectAll,
+        }
+    ];
 }
 
 function onSelectedContextMenu(ev, params) {
