@@ -197,6 +197,10 @@ export default class ElectronPlatform extends VectorBasePlatform {
     async setMinimizeToTrayEnabled(enabled: boolean): void {
         return await this._ipcCall('setMinimizeToTrayEnabled', enabled);
     }
+    
+    async getUpdateFeedUrl(): string {
+        return await this._ipcCall('getUpdateFeedUrl');
+    }
 
     async canSelfUpdate(): boolean {
         const feedUrl = await this._ipcCall('getUpdateFeedUrl');
